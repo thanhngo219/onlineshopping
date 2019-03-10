@@ -1,17 +1,21 @@
-package com.thanh.shopping.product.dto;
+package com.thanh.shopping.shoppingcart.dto;
 
 import com.thanh.shopping.dto.BaseDTO;
 
 public class ProductDTO extends BaseDTO {
+	
 	private String productNumber;
 	
 	private String name;
 	
 	private Double price;
-	
-	private String description;
-	
-	private StockDTO stock;
+
+	public ProductDTO(String productNumber, String name, Double price) {
+		super();
+		this.productNumber = productNumber;
+		this.name = name;
+		this.price = price;
+	}
 
 	public String getProductNumber() {
 		return productNumber;
@@ -36,21 +40,4 @@ public class ProductDTO extends BaseDTO {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public StockDTO getStock() {
-		return stock;
-	}
-
-	public void setStock(StockDTO stock) {
-		this.stock = stock;
-	}
-	
 }

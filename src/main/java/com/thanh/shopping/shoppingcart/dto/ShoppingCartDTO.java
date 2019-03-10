@@ -3,7 +3,7 @@ package com.thanh.shopping.shoppingcart.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.thanh.shopping.order.dto.BaseDTO;
+import com.thanh.shopping.dto.BaseDTO;
 
 public class ShoppingCartDTO extends BaseDTO {
 

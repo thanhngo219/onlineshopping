@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thanh.shopping.converter.DtoConverter;
 import com.thanh.shopping.order.dto.OrderDTO;
-import com.thanh.shopping.shoppingcart.domain.ShoppingCart;
 import com.thanh.shopping.shoppingcart.dto.CartLineDTO;
 import com.thanh.shopping.shoppingcart.dto.ShoppingCartDTO;
 import com.thanh.shopping.shoppingcart.service.ShoppingCartService;
@@ -24,15 +22,14 @@ public class ShoppingCartController {
 	
 	@RequestMapping(value = "shoppingCart/{cartId}", method = RequestMethod.GET)
 	public ResponseEntity<?> getCartByPath(@PathVariable(value = "cartId") String cartId) {
-		ShoppingCart sc = shoppingCartService.getCart(cartId);
-		ShoppingCartDTO result = DtoConverter.shoppingCartToDTO(sc);
-		return new ResponseEntity<ShoppingCartDTO>(result, HttpStatus.OK);
+		ShoppingCartDTO sc = shoppingCartService.getShoppingCartDTO(cartId);
+		return new ResponseEntity<ShoppingCartDTO>(sc, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "shoppingCart/{cartId}", method = RequestMethod.POST)
 	public ResponseEntity<?> addToCart(@PathVariable(value = "cartId") String cartId,
 			@RequestBody CartLineDTO cartLineDTO) {
-		shoppingCartService.addToCart(cartId, cartLineDTO.getProductNumber(), cartLineDTO.getQuantity());
+		shoppingCartService.addToCart(cartId, cartLineDTO.getProduct(), cartLineDTO.getQuantity());
 		return new ResponseEntity<ShoppingCartDTO>(HttpStatus.OK);
 	}
 	

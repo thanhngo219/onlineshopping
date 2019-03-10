@@ -1,30 +1,31 @@
 package com.thanh.shopping.shoppingcart.dto;
 
-import com.thanh.shopping.order.dto.BaseDTO;
+import com.thanh.shopping.dto.BaseDTO;
 
 public class CartLineDTO extends BaseDTO {
-	private String productNumber;
+	
+	private ProductDTO product;
 	
 	private Long quantity;
-	
-	public CartLineDTO(String productNumber, Long quantity) {
+
+	public CartLineDTO(ProductDTO product, Long quantity) {
 		super();
-		this.productNumber = productNumber;
+		this.product = product;
 		this.quantity = quantity;
 	}
 
-	public String getProductNumber() {
-		return productNumber;
+	public ProductDTO getProduct() {
+		return product;
 	}
-	
-	public void setProductNumber(String productNumber) {
-		this.productNumber = productNumber;
+
+	public void setProduct(ProductDTO product) {
+		this.product = product;
 	}
-	
+
 	public Long getQuantity() {
 		return quantity;
 	}
-	
+
 	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
 	}

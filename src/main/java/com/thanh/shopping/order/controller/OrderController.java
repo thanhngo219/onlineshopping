@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thanh.shopping.converter.DtoConverter;
-import com.thanh.shopping.order.domain.Order;
 import com.thanh.shopping.order.dto.OrderDTO;
 import com.thanh.shopping.order.service.OrderService;
 
@@ -21,8 +19,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "order/{orderId}", method = RequestMethod.GET)
 	public ResponseEntity<?> getOrder(@PathVariable("orderId") String orderId) {
-		Order order = orderService.getOrder(orderId);
-		OrderDTO result = DtoConverter.orderToDTO(order);
-		return new ResponseEntity<OrderDTO>(result, HttpStatus.OK);
+		OrderDTO order = orderService.getOrder(orderId);
+		return new ResponseEntity<OrderDTO>(order, HttpStatus.OK);
 	}
 }

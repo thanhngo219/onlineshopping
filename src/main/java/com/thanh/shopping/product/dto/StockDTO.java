@@ -1,4 +1,6 @@
-package com.thanh.shopping.order.dto;
+package com.thanh.shopping.product.dto;
+
+import com.thanh.shopping.dto.BaseDTO;
 
 public class StockDTO extends BaseDTO {
 	

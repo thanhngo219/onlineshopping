@@ -9,6 +9,6 @@ public interface OrderService {
 	
 	void createOrder(ShoppingCart shoppingCart);
 	
-	Order getOrder(String orderId);
+	OrderDTO getOrder(String orderId);
 
 }

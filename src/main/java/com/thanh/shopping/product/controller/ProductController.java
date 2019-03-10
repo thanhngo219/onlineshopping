@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thanh.shopping.converter.DtoConverter;
-import com.thanh.shopping.order.dto.StockDTO;
-import com.thanh.shopping.product.domain.Product;
 import com.thanh.shopping.product.dto.ProductDTO;
+import com.thanh.shopping.product.dto.StockDTO;
 import com.thanh.shopping.product.service.ProductService;
 
 @RestController
@@ -24,16 +22,14 @@ public class ProductController {
 	
 	@RequestMapping(value = "product/{productNumber}", method = RequestMethod.GET)
 	public ResponseEntity<?> getProductByPath(@PathVariable(value = "productNumber") String productNumber) {
-		Product product = productService.getProduct(productNumber);
-		ProductDTO result = DtoConverter.productToDTO(product);
-		return new ResponseEntity<ProductDTO>(result, HttpStatus.OK);
+		ProductDTO product = productService.getProductDTO(productNumber);
+		return new ResponseEntity<ProductDTO>(product, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "products", method = RequestMethod.GET)
 	public ResponseEntity<?> getProductByParams(@RequestParam(value = "productNumber") String productNumber) {
-		Product product = productService.getProduct(productNumber);
-		ProductDTO result = DtoConverter.productToDTO(product);
-		return new ResponseEntity<ProductDTO>(result, HttpStatus.OK);
+		ProductDTO product = productService.getProductDTO(productNumber);
+		return new ResponseEntity<ProductDTO>(product, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "product/stock/{productNumber}", method = RequestMethod.POST)
