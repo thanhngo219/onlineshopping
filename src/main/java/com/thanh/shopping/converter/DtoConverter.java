@@ -1,16 +1,16 @@
 package com.thanh.shopping.converter;
 
-import com.thanh.shopping.domain.order.Order;
-import com.thanh.shopping.domain.order.OrderLine;
-import com.thanh.shopping.domain.product.Product;
-import com.thanh.shopping.domain.shoppingcart.ShoppingCart;
-import com.thanh.shopping.domain.shoppingcart.ShoppingCartLine;
-import com.thanh.shopping.dto.CartLineDTO;
-import com.thanh.shopping.dto.OrderDTO;
-import com.thanh.shopping.dto.OrderLineDTO;
-import com.thanh.shopping.dto.ProductDTO;
-import com.thanh.shopping.dto.ShoppingCartDTO;
-import com.thanh.shopping.dto.StockDTO;
+import com.thanh.shopping.order.domain.Order;
+import com.thanh.shopping.order.domain.OrderLine;
+import com.thanh.shopping.order.dto.OrderDTO;
+import com.thanh.shopping.order.dto.OrderLineDTO;
+import com.thanh.shopping.order.dto.StockDTO;
+import com.thanh.shopping.product.domain.Product;
+import com.thanh.shopping.product.dto.ProductDTO;
+import com.thanh.shopping.shoppingcart.domain.ShoppingCart;
+import com.thanh.shopping.shoppingcart.domain.ShoppingCartLine;
+import com.thanh.shopping.shoppingcart.dto.CartLineDTO;
+import com.thanh.shopping.shoppingcart.dto.ShoppingCartDTO;
 
 public class DtoConverter {
 	public static ProductDTO productToDTO(Product p) {

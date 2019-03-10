@@ -1,7 +1,7 @@
 package com.thanh.shopping.converter;
 
-import com.thanh.shopping.domain.order.Product;
-import com.thanh.shopping.dto.ProductDTO;
+import com.thanh.shopping.order.domain.Product;
+import com.thanh.shopping.product.dto.ProductDTO;
 
 public class ProductMapper implements DtoMapper<Product, ProductDTO> {
 

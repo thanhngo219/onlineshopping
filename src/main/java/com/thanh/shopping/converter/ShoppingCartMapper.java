@@ -1,7 +1,7 @@
 package com.thanh.shopping.converter;
 
-import com.thanh.shopping.domain.shoppingcart.ShoppingCart;
-import com.thanh.shopping.dto.ShoppingCartDTO;
+import com.thanh.shopping.shoppingcart.domain.ShoppingCart;
+import com.thanh.shopping.shoppingcart.dto.ShoppingCartDTO;
 
 public class ShoppingCartMapper implements DtoMapper<ShoppingCart, ShoppingCartDTO> {
 
