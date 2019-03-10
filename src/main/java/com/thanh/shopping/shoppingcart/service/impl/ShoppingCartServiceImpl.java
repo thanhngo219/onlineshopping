@@ -72,4 +72,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 		}
 		return null;
 	}
+
+	@Override
+	public void updateProductsInCarts(String productNumber, String productName, Double price) {
+		
+	}
 }

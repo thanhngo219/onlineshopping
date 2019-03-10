@@ -13,4 +13,6 @@ public interface ShoppingCartService {
 	void checkOut(String cartId);
 	
 	ShoppingCart getShoppingCart(String cartId);
+	
+	void updateProductsInCarts(String productNumber, String productName, Double price);
 }

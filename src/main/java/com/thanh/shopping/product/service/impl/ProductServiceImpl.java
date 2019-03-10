@@ -12,6 +12,7 @@ import com.thanh.shopping.product.domain.Stock;
 import com.thanh.shopping.product.dto.ProductDTO;
 import com.thanh.shopping.product.repository.ProductRepository;
 import com.thanh.shopping.product.service.ProductService;
+import com.thanh.shopping.shoppingcart.service.ShoppingCartService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -20,22 +21,21 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository productRepository;
 	
 	@Autowired
+	private ShoppingCartService shoppingCartService;
+	
+	@Autowired
 	@Qualifier("productMapper")
 	private DtoMapper<Product, ProductDTO> dtoMapper;
 
 	@Override
-	public void addProduct(String productNumber, String name, String description, Double price) {
-		Product product = getProduct(productNumber);
+	public void addProduct(ProductDTO productDTO) {
+		Product product = getProduct(productDTO.getProductNumber());
 		if (product != null) {
 			// Product is existed. Should throw exception here
 		}
 		else {
-			product = new Product();
-			product.setProductNumber(productNumber);
-			product.setName(name);
-			product.setPrice(price);
-			product.setDescription(description);
-			productRepository.save(product);
+			product = dtoMapper.toEntity(productDTO);
+			productRepository.insert(product);
 		}
 	}
 
@@ -68,5 +68,18 @@ public class ProductServiceImpl implements ProductService {
 			return optProduct.get();
 		}
 		return null;
+	}
+
+	@Override
+	public void updateProduct(ProductDTO productDTO) {
+		Product product = getProduct(productDTO.getProductNumber());
+		if (product == null) {
+			// throw exception
+		}
+		product = dtoMapper.toEntity(productDTO);
+		productRepository.save(product);
+		
+		//update ShoppingCart
+		shoppingCartService.updateProductsInCarts(productDTO.getProductNumber(), productDTO.getName(), productDTO.getPrice());
 	}
 }

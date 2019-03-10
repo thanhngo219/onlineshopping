@@ -41,8 +41,7 @@ public class ProductController {
 	
 	@RequestMapping(value = "product", method = RequestMethod.POST)
 	public ResponseEntity<?> addProduct(@RequestBody ProductDTO product) {
-		productService.addProduct(product.getProductNumber(), product.getName(),
-				product.getDescription(), product.getPrice());
+		productService.addProduct(product);
 		return new ResponseEntity<ProductDTO>(HttpStatus.OK);
 	}
 }

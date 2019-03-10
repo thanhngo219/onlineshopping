@@ -35,9 +35,13 @@ public class ProductMapper implements DtoMapper<Product, ProductDTO> {
 	}
 
 	@Override
-	public Product toEntity(ProductDTO v) {
-		// TODO Auto-generated method stub
-		return null;
+	public Product toEntity(ProductDTO dto) {
+		Product product = new Product();
+		product.setProductNumber(dto.getProductNumber());
+		product.setName(dto.getName());
+		product.setPrice(dto.getPrice());
+		product.setDescription(dto.getDescription());
+		return product;
 	}
 
 }
