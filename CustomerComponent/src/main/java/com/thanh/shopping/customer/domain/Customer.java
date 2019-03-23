@@ -12,7 +12,7 @@ import com.thanh.shopping.domain.BaseEntity;
 public class Customer extends BaseEntity {
 	
 	@Id
-	private Long customerNumber;
+	private String customerNumber;
 	
 	private String firstName;
 	
@@ -28,7 +28,7 @@ public class Customer extends BaseEntity {
 	
 	private List<CreditCard> creditCards = new ArrayList<>();
 
-	public Customer(Long customerNumber, String firstName, String lastName, String email, String phone, Account account,
+	public Customer(String customerNumber, String firstName, String lastName, String email, String phone, Account account,
 			Address address, List<CreditCard> creditCards) {
 		super();
 		this.customerNumber = customerNumber;
@@ -41,67 +41,67 @@ public class Customer extends BaseEntity {
 		this.creditCards = creditCards;
 	}
 
-	public final Long getCustomerNumber() {
+	public String getCustomerNumber() {
 		return customerNumber;
 	}
 
-	public final void setCustomerNumber(Long customerNumber) {
+	public void setCustomerNumber(String customerNumber) {
 		this.customerNumber = customerNumber;
 	}
 
-	public final String getFirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public final void setFirstName(String firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public final String getLastName() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public final void setLastName(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public final String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public final void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public final String getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public final void setPhone(String phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public final Account getAccount() {
+	public Account getAccount() {
 		return account;
 	}
 
-	public final void setAccount(Account account) {
+	public void setAccount(Account account) {
 		this.account = account;
 	}
 
-	public final Address getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public final void setAddress(Address address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
-	public final List<CreditCard> getCreditCards() {
+	public List<CreditCard> getCreditCards() {
 		return creditCards;
 	}
 
-	public final void setCreditCards(List<CreditCard> creditCards) {
+	public void setCreditCards(List<CreditCard> creditCards) {
 		this.creditCards = creditCards;
 	}
 }

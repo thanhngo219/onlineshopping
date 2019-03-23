@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.thanh.shopping.order.dto.OrderDTO;
 import com.thanh.shopping.order.service.OrderService;
+import com.thanh.shopping.shoppingcart.dto.ShoppingCartDTO;
 
 @RestController
 public class OrderController {
@@ -21,5 +22,11 @@ public class OrderController {
 	public ResponseEntity<?> getOrder(@PathVariable("orderId") String orderId) {
 		OrderDTO order = orderService.getOrder(orderId);
 		return new ResponseEntity<OrderDTO>(order, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/order", method = RequestMethod.POST)
+	public ResponseEntity<?> createOrder(ShoppingCartDTO shoppingCartDTO) {
+		orderService.createOrder(shoppingCartDTO);
+		return new ResponseEntity<OrderDTO>(HttpStatus.OK);
 	}
 }

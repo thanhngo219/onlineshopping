@@ -26,8 +26,8 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	public void createOrder(ShoppingCartDTO shoppingCart) {
-//		Order order = OrderBuilder.buildOrder(shoppingCart);
-//		orderRepository.save(order);
+		Order order = OrderBuilder.buildOrder(shoppingCart);
+		orderRepository.save(order);
 	}
 
 	@Override

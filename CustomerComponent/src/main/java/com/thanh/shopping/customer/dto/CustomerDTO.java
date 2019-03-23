@@ -6,6 +6,7 @@ import java.util.List;
 import com.thanh.shopping.dto.BaseDTO;
 
 public class CustomerDTO extends BaseDTO {
+	
 	private String customerNumber;
 	
 	private String firstName;

@@ -19,9 +19,6 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-//	@Autowired
-//	private ShoppingCartService shoppingCartService;
-	
 	@Autowired
 	@Qualifier("productMapper")
 	private DtoMapper<Product, ProductDTO> dtoMapper;
