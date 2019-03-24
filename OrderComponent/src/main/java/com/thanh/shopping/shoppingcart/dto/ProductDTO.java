@@ -9,6 +9,9 @@ public class ProductDTO extends BaseDTO {
 	private String name;
 	
 	private Double price;
+	
+	public ProductDTO() {
+	}
 
 	public ProductDTO(String productNumber, String name, Double price) {
 		super();

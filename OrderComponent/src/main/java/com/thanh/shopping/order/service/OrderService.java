@@ -9,4 +9,7 @@ public interface OrderService {
 	
 	OrderDTO getOrder(String orderId);
 
+	void confirm(String orderNumber);
+	
+	void setCustomer(String orderNumber, String customerNumber);
 }

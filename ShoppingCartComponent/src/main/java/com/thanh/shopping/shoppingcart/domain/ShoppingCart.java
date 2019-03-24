@@ -1,6 +1,5 @@
 package com.thanh.shopping.shoppingcart.domain;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.thanh.shopping.domain.BaseEntity;
 
 @Document
-public class ShoppingCart extends BaseEntity implements Serializable {
-	
-	private static final long serialVersionUID = 644823980385993554L;
+public class ShoppingCart extends BaseEntity {
 
 	@Id
 	private String cartId;

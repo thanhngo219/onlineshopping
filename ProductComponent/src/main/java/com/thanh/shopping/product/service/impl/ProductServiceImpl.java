@@ -1,5 +1,6 @@
 package com.thanh.shopping.product.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.thanh.shopping.mapper.DtoMapper;
 import com.thanh.shopping.product.domain.Product;
 import com.thanh.shopping.product.domain.Stock;
+import com.thanh.shopping.product.dto.OrderedProductDTO;
 import com.thanh.shopping.product.dto.ProductDTO;
 import com.thanh.shopping.product.repository.ProductRepository;
 import com.thanh.shopping.product.service.ProductService;
@@ -77,5 +79,25 @@ public class ProductServiceImpl implements ProductService {
 		
 		//update ShoppingCart
 //		shoppingCartService.updateProductsInCarts(productDTO.getProductNumber(), productDTO.getName(), productDTO.getPrice());
+	}
+	
+	private void reduceProductInStock(String productNumber, long quantity) {
+		Product product = getProduct(productNumber);
+		
+		if (product.getStock() != null) {
+			Stock stock = product.getStock();
+			stock.setQuantity(stock.getQuantity() - quantity);
+		}
+		
+		productRepository.save(product);
+	}
+
+	@Override
+	public void reduceProductInStock(List<OrderedProductDTO> orderedProductDtos) {
+		
+		for(OrderedProductDTO orderedProductDto : orderedProductDtos) {
+			reduceProductInStock(orderedProductDto.getProductNumber(), orderedProductDto.getQuantity());
+		}
+		
 	}
 }

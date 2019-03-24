@@ -1,16 +1,12 @@
 package com.thanh.shopping.shoppingcart.domain;
 
-import java.io.Serializable;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.thanh.shopping.domain.BaseEntity;
 
 @Document
-public class Product extends BaseEntity implements Serializable {
+public class Product extends BaseEntity {
 
-	private static final long serialVersionUID = -7047462199795721098L;
-	
 	private String productNumber;
 	
 	private String name;

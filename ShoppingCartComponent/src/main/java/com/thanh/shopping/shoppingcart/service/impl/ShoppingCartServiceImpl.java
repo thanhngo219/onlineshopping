@@ -10,6 +10,8 @@ import com.thanh.shopping.mapper.DtoMapper;
 import com.thanh.shopping.shoppingcart.domain.ShoppingCart;
 import com.thanh.shopping.shoppingcart.dto.ProductDTO;
 import com.thanh.shopping.shoppingcart.dto.ShoppingCartDTO;
+import com.thanh.shopping.shoppingcart.integration.OrderProxy;
+import com.thanh.shopping.shoppingcart.integration.ProductProxy;
 import com.thanh.shopping.shoppingcart.repository.ShoppingCartRepository;
 import com.thanh.shopping.shoppingcart.service.ShoppingCartService;
 
@@ -19,29 +21,29 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	@Autowired
 	private ShoppingCartRepository shoppingCartRepository;
 	
-//	@Autowired
-//	private ProductService productService;
-//	
-//	@Autowired
-//	private OrderService orderService;
-//	
+	@Autowired
+	private OrderProxy orderProxy;
+	
+	@Autowired
+	private ProductProxy productProxy;
+	
 	@Autowired
 	@Qualifier("shoppingCartMapper")
 	private DtoMapper<ShoppingCart, ShoppingCartDTO> dtoMapper;
 	
 	@Override
 	public void addToCart(String cartId, ProductDTO productDTO, Long quantity) {
-//		Product product = productService.getProduct(productDTO.getProductNumber());
-//		ShoppingCart cart = getShoppingCart(cartId);
-//		if (cart != null && product != null) {
-//			cart.addToCart(product.getProductNumber(), product.getName(), product.getPrice(), quantity);
-//		}
-//		else if (product != null) {
-//			cart = new ShoppingCart();
-//			cart.setCartId(cartId);
-//			cart.addToCart(product.getProductNumber(), product.getName(), product.getPrice(), quantity);
-//		}
-//		shoppingCartRepository.save(cart);
+		ProductDTO product = productProxy.getProduct(productDTO.getProductNumber());
+		ShoppingCart cart = getShoppingCart(cartId);
+		if (cart != null && product != null) {
+			cart.addToCart(product.getProductNumber(), product.getName(), product.getPrice(), quantity);
+		}
+		else if (product != null) {
+			cart = new ShoppingCart();
+			cart.setCartId(cartId);
+			cart.addToCart(product.getProductNumber(), product.getName(), product.getPrice(), quantity);
+		}
+		shoppingCartRepository.save(cart);
 	}
 
 	@Override
@@ -55,9 +57,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 	@Override
 	public void checkOut(String cartId) {
-		ShoppingCart shoppingCart = getShoppingCart(cartId);
+		ShoppingCartDTO shoppingCart = getShoppingCartDTO(cartId);
 		if (shoppingCart != null) {
-//			orderService.createOrder(shoppingCart);
+			orderProxy.createOrder(shoppingCart);
 		}
 	}
 

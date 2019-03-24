@@ -23,17 +23,13 @@ public class CustomerDTO extends BaseDTO {
 	
 	private List<CreditCardDTO> creditCards = new ArrayList<>();
 
-	public CustomerDTO(String customerNumber, String firstName, String lastName, String email, String phone,
-			AddressDTO address, AccountDTO account, List<CreditCardDTO> creditCards) {
+	public CustomerDTO(String customerNumber, String firstName, String lastName, String email, String phone) {
 		super();
 		this.customerNumber = customerNumber;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		this.address = address;
-		this.account = account;
-		this.creditCards = creditCards;
 	}
 
 	public final String getCustomerNumber() {

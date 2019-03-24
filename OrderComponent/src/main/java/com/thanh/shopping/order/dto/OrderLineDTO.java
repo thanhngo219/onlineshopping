@@ -7,6 +7,9 @@ public class OrderLineDTO extends BaseDTO {
 	private ProductDTO product;
 	
 	private Long quantity;
+	
+	public OrderLineDTO() {
+	}
 
 	public OrderLineDTO(ProductDTO product, Long quantity) {
 		super();

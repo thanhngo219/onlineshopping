@@ -15,6 +15,11 @@ public class OrderDTO extends BaseDTO {
 	
 	private List<OrderLineDTO> orderLines = new ArrayList<OrderLineDTO>();
 	
+	private OrderCustomerDTO customer;
+	
+	public OrderDTO() {
+	}
+
 	public OrderDTO(String orderId, Date orderDate, String orderStatus) {
 		super();
 		this.orderId = orderId;
@@ -26,19 +31,44 @@ public class OrderDTO extends BaseDTO {
 		orderLines.add(orderLine);
 	}
 
-	public String getOrderId() {
+	public final String getOrderId() {
 		return orderId;
 	}
 
-	public Date getOrderDate() {
+	public final void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public final Date getOrderDate() {
 		return orderDate;
 	}
 
-	public String getOrderStatus() {
+	public final void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public final String getOrderStatus() {
 		return orderStatus;
 	}
 
-	public List<OrderLineDTO> getOrderLines() {
+	public final void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public final List<OrderLineDTO> getOrderLines() {
 		return orderLines;
 	}
+
+	public final void setOrderLines(List<OrderLineDTO> orderLines) {
+		this.orderLines = orderLines;
+	}
+
+	public final OrderCustomerDTO getCustomer() {
+		return customer;
+	}
+
+	public final void setCustomer(OrderCustomerDTO customer) {
+		this.customer = customer;
+	}
+	
 }

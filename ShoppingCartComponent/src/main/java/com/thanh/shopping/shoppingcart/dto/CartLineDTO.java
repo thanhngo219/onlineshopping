@@ -7,6 +7,9 @@ public class CartLineDTO extends BaseDTO {
 	private ProductDTO product;
 	
 	private Long quantity;
+	
+	public CartLineDTO() {
+	}
 
 	public CartLineDTO(ProductDTO product, Long quantity) {
 		super();

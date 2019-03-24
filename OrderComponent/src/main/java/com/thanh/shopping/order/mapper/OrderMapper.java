@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.thanh.shopping.mapper.DtoMapper;
+import com.thanh.shopping.order.domain.Customer;
 import com.thanh.shopping.order.domain.Order;
 import com.thanh.shopping.order.domain.OrderLine;
+import com.thanh.shopping.order.dto.OrderCustomerDTO;
 import com.thanh.shopping.order.dto.OrderDTO;
 import com.thanh.shopping.order.dto.OrderLineDTO;
 
@@ -16,14 +18,23 @@ public class OrderMapper implements DtoMapper<Order, OrderDTO> {
 	
 	@Autowired
 	@Qualifier("orderLineMapper")
-	private DtoMapper<OrderLine, OrderLineDTO> dtoMapper;
+	private DtoMapper<OrderLine, OrderLineDTO> orderLineMapper;
+	
+	@Autowired
+	@Qualifier("orderCustomerMapper")
+	private DtoMapper<Customer, OrderCustomerDTO> orderCustomerMapper;
 
 	@Override
 	public OrderDTO toDTO(Order order) {
 		OrderDTO result = new OrderDTO(order.getOrderId(), order.getOrderDate(), order.getOrderStatus());
 		for(OrderLine orderLine : order.getOrderLines()) {
-			result.addToOrderLines(dtoMapper.toDTO(orderLine));
+			result.addToOrderLines(orderLineMapper.toDTO(orderLine));
 		}
+		
+		if (order.getCustomer() != null) {
+			result.setCustomer(orderCustomerMapper.toDTO(order.getCustomer()));
+		}
+		
 		return result;
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thanh.shopping.customer.dto.CustomerDTO;
+import com.thanh.shopping.customer.dto.OrderCustomerDTO;
 import com.thanh.shopping.customer.service.CustomerService;
 
 
@@ -28,5 +29,10 @@ public class CustomerController {
 	@GetMapping("/customer/{customerNumber}")
 	public ResponseEntity<?> getCustomer(@PathVariable String customerNumber) {
 		 return new ResponseEntity<CustomerDTO>(customerService.getCustomer(customerNumber), HttpStatus.OK);
+	}
+	
+	@GetMapping("/orderCustomer/{customerNumber}")
+	public ResponseEntity<?> getOrderCustomer(@PathVariable String customerNumber) {
+		 return new ResponseEntity<OrderCustomerDTO>(customerService.getOrderCustomer(customerNumber), HttpStatus.OK);
 	}
 }

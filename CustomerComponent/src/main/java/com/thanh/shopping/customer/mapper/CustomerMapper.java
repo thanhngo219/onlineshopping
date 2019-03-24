@@ -35,28 +35,31 @@ public class CustomerMapper implements DtoMapper<Customer, CustomerDTO> {
 	
 	@Override
 	public CustomerDTO toDTO(Customer entity) {
+		CustomerDTO customerDto = new CustomerDTO(entity.getCustomerNumber(), entity.getFirstName(),
+				entity.getLastName(), entity.getEmail(), entity.getPhone());
+		
 		List<CreditCardDTO> creditCardDtos = new ArrayList<CreditCardDTO>();
 		if (entity.getCreditCards() != null) {
 			for (CreditCard creditCard : entity.getCreditCards()) {
 				creditCardDtos.add(new CreditCardDTO(creditCard.getCardNumber(), creditCard.getExpirationDate()));
 			}
 		}
+		customerDto.setCreditCards(creditCardDtos);
 		
 		AccountDTO accountDto = null;
 		if (entity.getAccount() != null) {			
 			accountDto = new AccountDTO(entity.getAccount().getAccountNumber(),
 					entity.getAccount().getUsername(), entity.getAccount().getPassword());
 		}
+		customerDto.setAccount(accountDto);
 		
 		AddressDTO addressDto = null;
 		Address address = entity.getAddress();
 		if (address != null) {
 			addressDto = new AddressDTO(address.getStreet(), address.getCity(), address.getZipCode(), address.getCountry());
 		}
-		
-		CustomerDTO customerDto = new CustomerDTO(entity.getCustomerNumber(), entity.getFirstName(),
-				entity.getLastName(), entity.getEmail(), entity.getPhone(), addressDto, accountDto, creditCardDtos);
-		
+		customerDto.setAddress(addressDto);
+
 		return customerDto;
 	}
 

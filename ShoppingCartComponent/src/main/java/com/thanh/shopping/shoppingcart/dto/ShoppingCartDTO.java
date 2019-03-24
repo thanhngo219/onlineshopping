@@ -11,8 +11,12 @@ public class ShoppingCartDTO extends BaseDTO {
 	
 	private List<CartLineDTO> cartLines = new ArrayList<CartLineDTO>();
 	
-	public ShoppingCartDTO(String cartId) {
+	public ShoppingCartDTO() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ShoppingCartDTO(String cartId) {
 		this.cartId = cartId;
 	}
 
@@ -20,11 +24,19 @@ public class ShoppingCartDTO extends BaseDTO {
 		cartLines.add(cartLine);
 	}
 
-	public String getCartId() {
+	public final String getCartId() {
 		return cartId;
 	}
 
-	public List<CartLineDTO> getCartLines() {
+	public final void setCartId(String cartId) {
+		this.cartId = cartId;
+	}
+
+	public final List<CartLineDTO> getCartLines() {
 		return cartLines;
+	}
+
+	public final void setCartLines(List<CartLineDTO> cartLines) {
+		this.cartLines = cartLines;
 	}
 }

@@ -1,6 +1,5 @@
 package com.thanh.shopping.order.domain;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,9 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.thanh.shopping.domain.BaseEntity;
 
 @Document
-public class Order extends BaseEntity implements Serializable {
-	
-	private static final long serialVersionUID = 5288965284105202021L;
+public class Order extends BaseEntity {
 
 	@Id
 	private String orderId;
@@ -23,6 +20,8 @@ public class Order extends BaseEntity implements Serializable {
 	private String orderStatus;
 	
 	private List<OrderLine> orderLines = new ArrayList<OrderLine>();
+	
+	private Customer customer;
 	
 	public void addOrderLine(OrderLine orderLine) {
 		orderLines.add(orderLine);
@@ -58,5 +57,17 @@ public class Order extends BaseEntity implements Serializable {
 
 	public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
+	}
+	
+	public void confirm() {
+		this.orderStatus = "confirmed";		
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 }

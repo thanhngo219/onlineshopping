@@ -7,6 +7,11 @@ public class CartLineDTO extends BaseDTO {
 	private ProductDTO product;
 	
 	private Long quantity;
+	
+	public CartLineDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public CartLineDTO(ProductDTO product, Long quantity) {
 		super();
